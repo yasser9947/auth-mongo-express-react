@@ -10,6 +10,7 @@ const userSchema = new Schema({
     password : {
         required : true , type: String
     },
+    games: [{type: Schema.Types.ObjectId, ref: 'game'}]
 
 
 

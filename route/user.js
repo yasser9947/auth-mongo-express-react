@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../model/User');
+const Game = require('../model/Game');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -55,7 +56,21 @@ router.post('/login', (req, res) => {
             }
         }).catch(err => res.send(err))
 })
+// router.post('/addgame' , (req,res)=>{
 
+        
+//     Game.create(req.body.game)
+//     .then((game)=> {
+//         console.log(game);
+        
+//         User.findByIdAndUpdate(req.body.id , {games : req.body.game[0] })
+//         .then(user => res.json(user) )
+//         .catch(err => res.send(err))
+//     })
+//     .catch(err => res.send(err))
+  
+
+// })
 // get user 
 // router.get('/profile' , (req , res)=>{
 //     var decoded = jwt.verify(req.body.token , 'secret')
@@ -66,6 +81,11 @@ router.post('/login', (req, res) => {
 //     .catch(err => res.send("err"))
 
 // })
+router.get('/getall' , (req , res)=>{
+   
+    User.find()
+    .then(users => res.send(users))
 
+})
 
 module.exports = router

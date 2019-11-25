@@ -12,5 +12,6 @@ app.use(express.json())
 app.use(express.urlencoded({extended : false}))
 
 app.use('/users' , require('./route/user'))
+app.use('/games' , require('./route/game'))
 
 app.listen(2550 , ()=> console.log('server is running ' + 2550))
